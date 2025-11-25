@@ -1,128 +1,267 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taxi Wala Tour Packages</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
-    header { background:url('Bhaskar_food/assets/images/banner.jpg') center/cover no-repeat; height:200px; color:#fff; display:flex; flex-direction:column; justify-content:center; text-align:center; }
-    header h1 { font-size:28px; margin:0; text-shadow:0 0 5px #000; }
-    header h2 { font-size:18px; margin:5px 0 0; text-shadow:0 0 5px #000; }
-    .drivers, .temples { padding:20px; }
-    .drivers h3, .temples h3 { margin-bottom:10px; }
-    .driver-box, .temple-box { background:#fff; border-radius:10px; padding:15px; margin-bottom:15px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
-    img { width:100%; border-radius:10px; }
-    .popup-bg { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; padding:20px; }
-    .popup-box { background:#fff; padding:20px; border-radius:10px; max-height:80vh; overflow:auto; }
-    .close { margin-top:10px; background:red; color:#fff; padding:10px; text-align:center; border-radius:5px; }
-    .whatsapp-btn { position:fixed; bottom:20px; right:20px; background:green; color:#fff; padding:15px; border-radius:50%; font-size:22px; text-decoration:none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxi Wala Tour Packages</title>
+
+<style>
+/* BASIC RESET */
+body, h1, h2, h3, p, div, img { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; background:#f5f5f5; }
+
+/* BANNER */
+.banner {
+    width:100%;
+    height:200px;
+    background:url('assets/images/banner.jpg') center/cover no-repeat;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+.banner h1 { font-size:28px; font-weight:bold; text-shadow:2px 2px 5px black; }
+.banner h2 { font-size:18px; margin-top:8px; text-shadow:1px 1px 4px black; }
+
+/* DRIVER SECTION */
+.driver-section {
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+.driver-box {
+    display:flex;
+    align-items:center;
+    margin-bottom:15px;
+}
+.driver-box img {
+    width:80px;
+    height:80px;
+    border-radius:10px;
+    margin-right:10px;
+}
+
+/* LANGUAGE BUTTONS */
+.lang-buttons {
+    text-align:center;
+    margin:10px 0;
+}
+.lang-buttons button {
+    padding:8px 15px;
+    margin:5px;
+    border:none;
+    background:#ff6600;
+    color:white;
+    border-radius:5px;
+}
+
+/* TEMPLES GRID */
+.temple-grid {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+    padding:10px;
+}
+.temple {
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 5px rgba(0,0,0,0.1);
+    padding:5px;
+    text-align:center;
+}
+.temple img {
+    width:100%;
+    height:110px;
+    border-radius:10px;
+}
+.temple h3 { margin-top:5px; font-size:16px; }
+
+/* POPUP BOX */
+.popup {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+}
+.popup-content {
+    background:white;
+    width:90%;
+    max-height:80%;
+    overflow:auto;
+    padding:15px;
+    border-radius:10px;
+}
+.close-btn {
+    background:red;
+    color:white;
+    padding:5px 10px;
+    border:none;
+    float:right;
+    margin-bottom:10px;
+}
+
+/* CUSTOMER FORM */
+.form-section {
+    background:white;
+    margin:10px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+input {
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-btn {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:12px 15px;
+    border-radius:50%;
+    font-size:22px;
+    text-align:center;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Taxi Wala Tour Packages</h1>
-  <h2>Shiva Taxi</h2>
-</header>
-
-<section class="drivers">
-  <h3>Driver Details</h3>
-
-  <div class="driver-box">
-    <strong>Name:</strong> Shiva<br>
-    <strong>Taxi:</strong> AP04 T5467<br>
-    <strong>Stand:</strong> Tirumala<br>
-    <img src="Bhaskar_food/assets/images/driver1.jpg" alt="Driver 1">
-  </div>
-
-  <div class="driver-box">
-    <strong>Name:</strong> Venkat<br>
-    <strong>Taxi:</strong> AP03 T0786<br>
-    <strong>Stand:</strong> Tirumala<br>
-    <img src="Bhaskar_food/assets/images/driver2.jpg" alt="Driver 2">
-  </div>
-
-  <div class="driver-box">
-    <strong>Name:</strong> Pawan<br>
-    <strong>Taxi:</strong> AP02 U1265<br>
-    <strong>Stand:</strong> Tirumala<br>
-    <img src="Bhaskar_food/assets/images/driver3.jpg" alt="Driver 3">
-  </div>
-</section>
-
-<section class="temples">
-  <h3>Temples</h3>
-
-  <div class="temple-box" onclick="openPopup('papavinashnam')">
-    <img src="Bhaskar_food/assets/images/temple1.jpg">
-    <h4>Papavinashnam</h4>
-  </div>
-
-  <div class="temple-box" onclick="openPopup('akashganga')">
-    <img src="Bhaskar_food/assets/images/temple2.jpg">
-    <h4>Akash Ganga</h4>
-  </div>
-
-  <div class="temple-box" onclick="openPopup('venugopala')">
-    <img src="Bhaskar_food/assets/images/temple3.jpg">
-    <h4>Venugopala Swamy Temple</h4>
-  </div>
-
-  <div class="temple-box" onclick="openPopup('japali')">
-    <img src="Bhaskar_food/assets/images/temple4.jpg">
-    <h4>Japali Hanuman Temple</h4>
-  </div>
-
-  <div class="temple-box" onclick="openPopup('silathornam')">
-    <img src="Bhaskar_food/assets/images/temple5.jpg">
-    <h4>Sila Thoranam</h4>
-  </div>
-
-  <div class="temple-box" onclick="openPopup('srivaripadalu')">
-    <img src="Bhaskar_food/assets/images/temple6.jpg">
-    <h4>Srivari Padalu</h4>
-  </div>
-</section>
-
-<!-- Customer Details Form -->
-
-<section style="padding:20px;">
-  <h3>Customer Booking</h3>
-  <div class="driver-box" style="text-align:center;">
-    <p>Click the button below to submit your booking details.</p>
-    <a href="https://forms.gle/YoJyV2Ehk4HD2PKG6" target="_blank" style="background:#007bff;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:18px;display:inline-block;">📄 Fill Booking Form</a>
-  </div>
-</section>
-
-<!-- Popup --> -->
-
-<div id="popup" class="popup-bg">
-  <div class="popup-box" id="popup-content"></div>
+<!-- BANNER -->
+<div class="banner">
+    <div>
+        <h1>Taxi Wala Tour Packages</h1>
+        <h2>Shiva Taxi</h2>
+    </div>
 </div>
 
-<a class="whatsapp-btn" href="https://wa.me/916306788765?text=Hello%20Sir">💬</a>
+<!-- DRIVER DETAILS -->
+<div class="driver-section">
+    <h2>Drivers Information</h2><br>
+
+    <div class="driver-box">
+        <img src="Bhaskar_food/assets/images/driver1.jpg">
+        <div>
+            <h3>Driver: Shiva</h3>
+            <p>Taxi No: AP 04 T 5467</p>
+            <p>Stand: Tirumala</p>
+        </div>
+    </div>
+
+    <div class="driver-box">
+        <img src="Bhaskar_food/assets/images/driver2.jpg">
+        <div>
+            <h3>Driver: Venkat</h3>
+            <p>Taxi No: AP 03 T 0786</p>
+            <p>Stand: Tirumala</p>
+        </div>
+    </div>
+
+    <div class="driver-box">
+        <img src="Bhaskar_food/assets/images/driver3.jpg">
+        <div>
+            <h3>Driver: Pawan</h3>
+            <p>Taxi No: AP 02 U 1265</p>
+            <p>Stand: Tirumala</p>
+        </div>
+    </div>
+</div>
+
+<!-- LANGUAGES -->
+<div class="lang-buttons">
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('te')">తెలుగు</button>
+    <button onclick="setLang('ta')">தமிழ்</button>
+    <button onclick="setLang('ka')">ಕನ್ನಡ</button>
+    <button onclick="setLang('hi')">हिंदी</button>
+    <button onclick="setLang('ma')">मराठी</button>
+</div>
+
+<!-- TEMPLES SECTION -->
+<h2 style="text-align:center;margin-top:10px;">Temples</h2>
+
+<div class="temple-grid">
+
+    <div class="temple" onclick="openPopup('Papavinashnam')">
+        <img src="Bhaskar_food/assets/images/temple1.jpg">
+        <h3>Papavinashnam</h3>
+    </div>
+
+    <div class="temple" onclick="openPopup('Akash Ganga')">
+        <img src="Bhaskar_food/assets/images/temple2.jpg">
+        <h3>Akash Ganga</h3>
+    </div>
+
+    <div class="temple" onclick="openPopup('Venugopala Swamy Temple')">
+        <img src="Bhaskar_food/assets/images/temple3.jpg">
+        <h3>Venugopala Swamy Temple</h3>
+    </div>
+
+    <div class="temple" onclick="openPopup('Japali Hanuman Temple')">
+        <img src="Bhaskar_food/assets/images/temple4.jpg">
+        <h3>Japali Hanuman Temple</h3>
+    </div>
+
+    <div class="temple" onclick="openPopup('Sila Thoranam')">
+        <img src="Bhaskar_food/assets/images/temple5.jpg">
+        <h3>Sila Thoranam</h3>
+    </div>
+
+    <div class="temple" onclick="openPopup('Srivari Padalu')">
+        <img src="Bhaskar_food/assets/images/temple6.jpg">
+        <h3>Srivari Padalu</h3>
+    </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-content" id="popup-content">
+        <button class="close-btn" onclick="closePopup()">Close</button>
+        <h2 id="popup-title"></h2>
+        <p id="popup-desc"></p>
+    </div>
+</div>
+
+<!-- CUSTOMER FORM -->
+<div class="form-section">
+    <h2>Customer Details</h2>
+    <input type="text" placeholder="Your Name">
+    <input type="number" placeholder="Phone Number">
+    <input type="number" placeholder="No. of Persons">
+    <input type="text" placeholder="Address">
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-btn" href="https://wa.me/916306788765" target="_blank">💬</a>
 
 <script>
-  const templeText = {
-    papavinashnam: "Papavinashnam is a sacred waterfall in Tirumala believed to wash away sins. పాపవినాశనం వివరాలు…",
-    akashganga: "Akash Ganga is a holy waterfall used for Abhishekam water. ఆకాశగంగా వివరాలు…",
-    venugopala: "Venugopala Swamy Temple dedicated to Lord Krishna. వేణుగోపాల స్వామి వివరాలు…",
-    japali: "Japali Hanuman Temple where Lord Hanuman is believed to have meditated. జపాలి హనుమాన్ వివరాలు…",
-    silathornam: "Sila Thoranam is a natural rock arch, millions of years old. శిలా తోరణం వివరాలు…",
-    srivaripadalu: "Srivari Padalu where Lord Venkateswara’s footprints are believed to be found. శ్రీవారి పాదాలు వివరాలు…"
-  }
-
-  function openPopup(key){
+function openPopup(name) {
     document.getElementById('popup').style.display='flex';
-    document.getElementById('popup-content').innerHTML = `
-      <h2>${key.replace(/^[a-z]/, m => m.toUpperCase())}</h2>
-      <p>${templeText[key]}</p>
-      <div class='close' onclick="closePopup()">Close</div>`;
-  }
+    document.getElementById('popup-title').innerText=name;
+    document.getElementById('popup-desc').innerText="Full temple description will appear here in selected language.";
+}
 
-  function closePopup(){ document.getElementById('popup').style.display='none'; }
+function closePopup() {
+    document.getElementById('popup').style.display='none';
+}
+
+function setLang(lang) {
+    alert("Language changed: " + lang + " (I will add full translations when you send text)");
+}
 </script>
 
 </body>

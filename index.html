@@ -1,267 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taxi Wala Tour Packages</title>
-
-<style>
-/* BASIC RESET */
-body, h1, h2, h3, p, div, img { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; background:#f5f5f5; }
-
-/* BANNER */
-.banner {
-    width:100%;
-    height:200px;
-    background:url('assets/images/banner.jpg') center/cover no-repeat;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-}
-.banner h1 { font-size:28px; font-weight:bold; text-shadow:2px 2px 5px black; }
-.banner h2 { font-size:18px; margin-top:8px; text-shadow:1px 1px 4px black; }
-
-/* DRIVER SECTION */
-.driver-section {
-    background:white;
-    margin:15px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 8px rgba(0,0,0,0.1);
-}
-.driver-box {
-    display:flex;
-    align-items:center;
-    margin-bottom:15px;
-}
-.driver-box img {
-    width:80px;
-    height:80px;
-    border-radius:10px;
-    margin-right:10px;
-}
-
-/* LANGUAGE BUTTONS */
-.lang-buttons {
-    text-align:center;
-    margin:10px 0;
-}
-.lang-buttons button {
-    padding:8px 15px;
-    margin:5px;
-    border:none;
-    background:#ff6600;
-    color:white;
-    border-radius:5px;
-}
-
-/* TEMPLES GRID */
-.temple-grid {
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:10px;
-    padding:10px;
-}
-.temple {
-    background:white;
-    border-radius:10px;
-    box-shadow:0 0 5px rgba(0,0,0,0.1);
-    padding:5px;
-    text-align:center;
-}
-.temple img {
-    width:100%;
-    height:110px;
-    border-radius:10px;
-}
-.temple h3 { margin-top:5px; font-size:16px; }
-
-/* POPUP BOX */
-.popup {
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.7);
-    justify-content:center;
-    align-items:center;
-}
-.popup-content {
-    background:white;
-    width:90%;
-    max-height:80%;
-    overflow:auto;
-    padding:15px;
-    border-radius:10px;
-}
-.close-btn {
-    background:red;
-    color:white;
-    padding:5px 10px;
-    border:none;
-    float:right;
-    margin-bottom:10px;
-}
-
-/* CUSTOMER FORM */
-.form-section {
-    background:white;
-    margin:10px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 8px rgba(0,0,0,0.1);
-}
-input {
-    width:100%;
-    padding:10px;
-    margin:5px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-}
-
-/* WHATSAPP FLOAT */
-.whatsapp-btn {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:12px 15px;
-    border-radius:50%;
-    font-size:22px;
-    text-align:center;
-}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title data-i18n="siteTitle">Bhaskara Food / Local Tours</title>
+  <style>
+    body{font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; color:#222}
+    header{background:#0b6; padding:12px 16px; color:#fff; display:flex; align-items:center; justify-content:space-between}
+    .nav{display:flex; gap:12px; align-items:center}
+    .lang-select{padding:6px}
+    .container{padding:16px; max-width:980px; margin:20px auto; background:#fff; box-shadow:0 1px 6px rgba(0,0,0,.06); border-radius:8px}
+    .card{padding:12px; border:1px solid #eee; margin-bottom:12px; border-radius:6px}
+    .btn{display:inline-block; padding:8px 12px; border-radius:6px; background:#0b6; color:#fff; text-decoration:none}
+    .small{font-size:0.9em; color:#555}
+  </style>
 </head>
-
 <body>
 
-<!-- BANNER -->
-<div class="banner">
-    <div>
-        <h1>Taxi Wala Tour Packages</h1>
-        <h2>Shiva Taxi</h2>
+<header>
+  <div>
+    <strong id="brand" data-i18n="brand">Bhaskara Food</strong>
+    <div class="small" id="tagline" data-i18n="tagline">Welcome — local food & tours</div>
+  </div>
+
+  <div class="nav">
+    <!-- language selector -->
+    <label for="lang" class="small" data-i18n="selectLangLabel">Select Language:</label>
+    <select id="lang" class="lang-select" onchange="switchLanguage(this.value)">
+      <!-- keys: en, te, ta, kn, mr, hi -->
+      <option value="en">English</option>
+      <option value="te">తెలుగు</option>
+      <option value="ta">தமிழ்</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="mr">मराठी</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1 id="welcome" data-i18n="welcome">Welcome to Bhaskara Food</h1>
+    <p id="intro" data-i18n="intro">Local train-food & taxi booking demo. Choose language above. Use the buttons to view drivers, temples or book.</p>
+    <a class="btn" id="bookBtn" href="https://forms.gle/YoJyV2Ehk4HD2PKG6" target="_blank" data-i18n="bookNow">Book Now (Google Form)</a>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="templesTitle">Temples</h2>
+    <div id="templesList">
+      <!-- example temple entry -->
+      <div class="card">
+        <h3 data-i18n="temple1.title">Tirumala Temple</h3>
+        <p data-i18n="temple1.desc">One-day darshan tour and details here.</p>
+        <a class="btn" href="#" data-i18n="viewDetails">View Details</a>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- DRIVER DETAILS -->
-<div class="driver-section">
-    <h2>Drivers Information</h2><br>
-
-    <div class="driver-box">
-        <img src="Bhaskar_food/assets/images/driver1.jpg">
-        <div>
-            <h3>Driver: Shiva</h3>
-            <p>Taxi No: AP 04 T 5467</p>
-            <p>Stand: Tirumala</p>
-        </div>
+  <section class="card">
+    <h2 data-i18n="driversTitle">Drivers</h2>
+    <div id="driversList">
+      <!-- example driver -->
+      <div class="card">
+        <strong data-i18n="driverLabel">Driver Details</strong>
+        <p><span data-i18n="nameLabel">Name:</span> Govind</p>
+        <p><span data-i18n="phoneLabel">Phone:</span> 6306788765</p>
+        <p><span data-i18n="taxiLabel">Taxi Number:</span> AP 03 T 1435</p>
+        <p><span data-i18n="expLabel">Experience:</span> 12 years</p>
+        <a class="btn" href="https://wa.me/916306788765?text=Hello%20Govind" target="_blank" data-i18n="whatsappMessage">Message on WhatsApp</a>
+      </div>
     </div>
+  </section>
 
-    <div class="driver-box">
-        <img src="Bhaskar_food/assets/images/driver2.jpg">
-        <div>
-            <h3>Driver: Venkat</h3>
-            <p>Taxi No: AP 03 T 0786</p>
-            <p>Stand: Tirumala</p>
-        </div>
-    </div>
-
-    <div class="driver-box">
-        <img src="Bhaskar_food/assets/images/driver3.jpg">
-        <div>
-            <h3>Driver: Pawan</h3>
-            <p>Taxi No: AP 02 U 1265</p>
-            <p>Stand: Tirumala</p>
-        </div>
-    </div>
-</div>
-
-<!-- LANGUAGES -->
-<div class="lang-buttons">
-    <button onclick="setLang('en')">English</button>
-    <button onclick="setLang('te')">తెలుగు</button>
-    <button onclick="setLang('ta')">தமிழ்</button>
-    <button onclick="setLang('ka')">ಕನ್ನಡ</button>
-    <button onclick="setLang('hi')">हिंदी</button>
-    <button onclick="setLang('ma')">मराठी</button>
-</div>
-
-<!-- TEMPLES SECTION -->
-<h2 style="text-align:center;margin-top:10px;">Temples</h2>
-
-<div class="temple-grid">
-
-    <div class="temple" onclick="openPopup('Papavinashnam')">
-        <img src="Bhaskar_food/assets/images/temple1.jpg">
-        <h3>Papavinashnam</h3>
-    </div>
-
-    <div class="temple" onclick="openPopup('Akash Ganga')">
-        <img src="Bhaskar_food/assets/images/temple2.jpg">
-        <h3>Akash Ganga</h3>
-    </div>
-
-    <div class="temple" onclick="openPopup('Venugopala Swamy Temple')">
-        <img src="Bhaskar_food/assets/images/temple3.jpg">
-        <h3>Venugopala Swamy Temple</h3>
-    </div>
-
-    <div class="temple" onclick="openPopup('Japali Hanuman Temple')">
-        <img src="Bhaskar_food/assets/images/temple4.jpg">
-        <h3>Japali Hanuman Temple</h3>
-    </div>
-
-    <div class="temple" onclick="openPopup('Sila Thoranam')">
-        <img src="Bhaskar_food/assets/images/temple5.jpg">
-        <h3>Sila Thoranam</h3>
-    </div>
-
-    <div class="temple" onclick="openPopup('Srivari Padalu')">
-        <img src="Bhaskar_food/assets/images/temple6.jpg">
-        <h3>Srivari Padalu</h3>
-    </div>
-
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-    <div class="popup-content" id="popup-content">
-        <button class="close-btn" onclick="closePopup()">Close</button>
-        <h2 id="popup-title"></h2>
-        <p id="popup-desc"></p>
-    </div>
-</div>
-
-<!-- CUSTOMER FORM -->
-<div class="form-section">
-    <h2>Customer Details</h2>
-    <input type="text" placeholder="Your Name">
-    <input type="number" placeholder="Phone Number">
-    <input type="number" placeholder="No. of Persons">
-    <input type="text" placeholder="Address">
-</div>
-
-<!-- WHATSAPP FLOAT -->
-<a class="whatsapp-btn" href="https://wa.me/916306788765" target="_blank">💬</a>
+  <section class="card small">
+    <p data-i18n="qrInfo">Scan QR to message or book instantly.</p>
+    <!-- Example QR placeholder -->
+    <img src="assets/images/qr-placeholder.png" alt="QR" style="max-width:140px">
+  </section>
+</main>
 
 <script>
-function openPopup(name) {
-    document.getElementById('popup').style.display='flex';
-    document.getElementById('popup-title').innerText=name;
-    document.getElementById('popup-desc').innerText="Full temple description will appear here in selected language.";
-}
+  // TRANSLATIONS: add / edit keys and translations here
+  const translations = {
+    en: {
+      siteTitle: "Bhaskara Food / Local Tours",
+      brand: "Bhaskara Food",
+      tagline: "Welcome — local food & tours",
+      selectLangLabel: "Select Language:",
+      welcome: "Welcome to Bhaskara Food",
+      intro: "Local train-food & taxi booking demo. Choose language above. Use the buttons to view drivers, temples or book.",
+      bookNow: "Book Now (Google Form)",
+      templesTitle: "Temples",
+      temple1: { title: "Tirumala Temple", desc: "One-day darshan tour and details here."},
+      viewDetails: "View Details",
+      driversTitle: "Drivers",
+      driverLabel: "Driver Details",
+      nameLabel: "Name:",
+      phoneLabel: "Phone:",
+      taxiLabel: "Taxi Number:",
+      expLabel: "Experience:",
+      whatsappMessage: "Message on WhatsApp",
+      qrInfo: "Scan QR to message or book instantly.",
+    },
 
-function closePopup() {
-    document.getElementById('popup').style.display='none';
-}
+    te: {
+      siteTitle: "భాస్కర ఫుడ్ / స్థానిక టూర్లు",
+      brand: "భాస్కర ఫుడ్",
+      tagline: "స్వాగతం — స్థానిక ఫుడ్ & టూర్లు",
+      selectLangLabel: "భాషను ఎంచుకోండి:",
+      welcome: "భాస్కర ఫుడ్ కు స్వాగతం",
+      intro: "ప్రదేశీయ ట్రైన్-ఫుడ్ & ట్యాక్సీ బుకింగ్ డెమో. పై భాష ఎంచుకోండి. డ్రైవర్లు, ఆలయాలు లేదా బుక్ చేయడానికి బటన్లు ఉపయోగించండి.",
+      bookNow: "ఇప్పుడే బుక్ చేయండి (Google ఫారం)",
+      templesTitle: "ఆలయాలు",
+      temple1: { title: "తిరుమల ఆలయం", desc: "ఒకరోజు దర్శన టూర్ మరియు వివరాలు ఇక్కడ ఉన్నాయి."},
+      viewDetails: "వివరాలు చూడండి",
+      driversTitle: "డ్రైవర్లు",
+      driverLabel: "డ్రైవర్ వివరాలు",
+      nameLabel: "పేరు:",
+      phoneLabel: "ఫోన్:",
+      taxiLabel: "ట్యాక్సీ నంబర్:",
+      expLabel: "అనుభవం:",
+      whatsappMessage: "వాట్సాప్ లో సందేశం పంపండి",
+      qrInfo: "సंदేశం కోసం QR స్కాన్ చేయండి.",
+    },
 
-function setLang(lang) {
-    alert("Language changed: " + lang + " (I will add full translations when you send text)");
-}
+    ta: {
+      siteTitle: "பாஸ்கர் ஃபூடு / உள்ளூர் டூர்கள்",
+      brand: "பாஸ்கர் ஃபூடு",
+      tagline: "வாழ்த்துகள் — உள்ளூர் உணவு & சுற்றுலா",
+      selectLangLabel: "மொழியை தேர்ந்தெடுக்கவும்:",
+      welcome: "பாஸ்கர் ஃபூடுக்கு வருகை",
+      intro: "உள்ளூர் TRAIN-உணவு மற்றும் டாக்சி முன்பதிவு டெமோ. மேலிருந்து மொழியை தேர்ந்தெடுக்கவும்.",
+      bookNow: "இப்போதே முன்பதிவு செய் (Google படிவம்)",
+      templesTitle: "கோவில்கள்",
+      temple1: { title: "திருமலை ஆலயம்", desc: "ஒரு நாள் தரிசன சுற்றுலா மற்றும் விவரங்கள் இங்கு உள்ளன."},
+      viewDetails: "விவரங்களை காண்க",
+      driversTitle: "டிரைவர்கள்",
+      driverLabel: "டிரைவர் விவரங்கள்",
+      nameLabel: "பெயர்:",
+      phoneLabel: "தொலைபேசி:",
+      taxiLabel: "டேக்ஸி எண்:",
+      expLabel: "அனுபவம்:",
+      whatsappMessage: "வாட்ஸ்‌அப் மூலம் தொடர்பு கொள்க",
+      qrInfo: "செய்திக்காக QR ஸ்கேன் செய்க.",
+    },
+
+    kn: {
+      siteTitle: "ಭಾಸ್ಕರ ಫುಡ್ / ಸ್ಥಳೀಯ ಪ್ರವಾಸಗಳು",
+      brand: "ಭಾಸ್ಕರ ಫುಡ್",
+      tagline: "ಸ್ವಾಗತ — ಸ್ಥಳೀಯ ಆಹಾರ ಮತ್ತು ಪ್ರವಾಸಗಳು",
+      selectLangLabel: "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ:",
+      welcome: "ಭಾಸ್ಕರ ಫುಡ್‌ಗೆ ಸ್ವಾಗತ",
+      intro: "ಸ್ಥಳೀಯ ರೈಲು-ಆಹಾರ ಮತ್ತು ಟ್ಯಾಕ್ಸಿ ಬುಕ್ಕಿಂಗ್ ಡೆಮೊ. ಮೇಲಿಂದ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+      bookNow: "ಈಗ ಬುಕ್ ಮಾಡಿ (Google ಫಾರ್ಮ್)",
+      templesTitle: "ದೇವಾಲಯಗಳು",
+      temple1: { title: "ತಿರುಮಲ ದೇವಾಲಯ", desc: "ಒಂದು ದಿನದ ದರ್ಶನ ಪ್ರವಾಸ ಮತ್ತು ವಿವರಗಳು ಇಲ್ಲಿ ಇವೆ."},
+      viewDetails: "ವಿವರಗಳನ್ನು ನೋಡಿ",
+      driversTitle: "ಚಾಲಕರು",
+      driverLabel: "ಡ್ರೈವರ್ ವಿವರಗಳು",
+      nameLabel: "ಹೆಸರು:",
+      phoneLabel: "ಫೋನ್:",
+      taxiLabel: "ಟ್ಯಾಕ್ಸಿ ಸಂಖ್ಯೆ:",
+      expLabel: "ಅನुभవ:",
+      whatsappMessage: "WhatsApp ನಲ್ಲಿ ಸಂದೇಶ ಕಳುಹಿಸಿ",
+      qrInfo: "ಸಂದೇಶಕ್ಕೆ QR ಸ್ಕ್ಯಾನ್ ಮಾಡಿ.",
+    },
+
+    mr: {
+      siteTitle: "भास्कर फूड / स्थानिक टूर",
+      brand: "भास्कर फूड",
+      tagline: "स्वागत आहे — स्थानिक खाद्य & टूर",
+      selectLangLabel: "भाषा निवडा:",
+      welcome: "भास्कर फूडमध्ये आपले स्वागत आहे",
+      intro: "स्थानिक ट्रेन-फूड आणि टॅक्सी बुकिंग डेमो. वरून भाषा निवडा.",
+      bookNow: "आता बुक करा (Google फॉर्म)",
+      templesTitle: "मंदिरे",
+      temple1: { title: "तिरुमला मंदिर", desc: "एक दिवस दर्शन प्रवास आणि तपशील येथे आहेत."},
+      viewDetails: "तपशील पहा",
+      driversTitle: "चालक",
+      driverLabel: "ड्रायव्हर तपशील",
+      nameLabel: "नाव:",
+      phoneLabel: "फोन:",
+      taxiLabel: "टॅक्सी क्रमांक:",
+      expLabel: "अनुभव:",
+      whatsappMessage: "WhatsApp वर संदेश पाठवा",
+      qrInfo: "संदेशासाठी QR स्कॅन करा.",
+    },
+
+    hi: {
+      siteTitle: "भास्कर फूड / लोकल टूर",
+      brand: "भास्कर फूड",
+      tagline: "स्वागत है — लोकल फ़ूड और टूर",
+      selectLangLabel: "भाषा चुनें:",
+      welcome: "भास्कर फूड में आपका स्वागत है",
+      intro: "लोकल ट्रेन-फ़ूड और टैक्सी बुकिंग डेमो। ऊपर से भाषा चुनें।",
+      bookNow: "अभी बुक करें (Google फ़ॉर्म)",
+      templesTitle: "मंदिर",
+      temple1: { title: "तिरुमला मंदिर", desc: "एक-दिन दर्शन यात्रा और विवरण यहाँ हैं।"},
+      viewDetails: "विवरण देखें",
+      driversTitle: "ड्राइवर",
+      driverLabel: "ड्राइवर विवरण",
+      nameLabel: "नाम:",
+      phoneLabel: "फोन:",
+      taxiLabel: "टैक्सी नंबर:",
+      expLabel: "अनुभव:",
+      whatsappMessage: "WhatsApp पर संदेश भेजें",
+      qrInfo: "संदेश के लिए QR स्कैन करें।",
+    }
+  };
+
+  // helper: set text content by data-i18n attributes recursively
+  function applyTranslations(lang) {
+    const map = translations[lang] || translations['en'];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      // keys can be nested like "temple1.title"
+      const val = getNested(map, key);
+      if (val !== undefined) {
+        if (typeof val === 'object') {
+          // object: do nothing or stringify
+          el.textContent = Object.values(val).join(' ');
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+    // set page language attribute and title
+    document.documentElement.lang = lang;
+    if (map.siteTitle) document.title = map.siteTitle;
+  }
+
+  // nested getter "temple1.title"
+  function getNested(obj, path) {
+    return path.split('.').reduce((o, k) => (o || {})[k], obj);
+  }
+
+  // remember language
+  function switchLanguage(lang) {
+    localStorage.setItem('siteLang', lang);
+    applyTranslations(lang);
+  }
+
+  // on load: apply saved or default language
+  (function(){
+    const saved = localStorage.getItem('siteLang') || navigator.language.slice(0,2) || 'en';
+    const avail = ['en','te','ta','kn','mr','hi'];
+    const chosen = avail.includes(saved) ? saved : 'en';
+    document.getElementById('lang').value = chosen;
+    applyTranslations(chosen);
+  })();
 </script>
 
 </body>
